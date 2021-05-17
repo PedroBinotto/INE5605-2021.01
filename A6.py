@@ -7,7 +7,11 @@
     Python Version: 3.7.3
 '''
 
-class InstrumentoMusical:
+from abc import ABC, abstractmethod
+from typing import Iterable
+
+
+class InstrumentoMusical(ABC):
     def __init__(self, fabricante: str, material: str, acorde: bool):
         self.__fabricante = fabricante
         self.__material = material
@@ -37,9 +41,9 @@ class InstrumentoMusical:
     def acorde(self, novo_acorde: bool):
         self.__acorde = novo_acorde
 
-    def tocar(self, notas):
-        for nota in notas:
-            print(nota)
+    @abstractmethod
+    def tocar(self, notas: Iterable[int]):
+        pass
 
 
 class Violao(InstrumentoMusical):
@@ -54,16 +58,31 @@ class Violao(InstrumentoMusical):
         self.__quantidade_de_cordas = quantidade_de_cordas
         self.__cordas_de_aço = cordas_de_aço
     
+    @property
+    def quantidade_de_cordas(self):
+        return self.__quantidade_de_cordas
+    
+    @quantidade_de_cordas.setter
+    def quantodade_de_cordas(self, nova_quantidade: str):
+        self.quantidade_de_cordas = nova_quantidade
+
+    @property
+    def cordas_de_aço(self):
+        return self.__cordas_de_aço
+    
+    @cordas_de_aço.setter
+    def quantodade_de_cordas(self, novas_cordas: str):
+        self.cordas_de_aço = novas_cordas
+
     def afinar_corda(self, x):
-        if not x > self.__quantidade_de_cordas:
+        if not x > self.quantidade_de_cordas:
             print("Afinando corda " + str(x))
         else:
             print("Este instumento só possui {} cordas!"\
-                .format(self.__quantidade_de_cordas))
+                .format(self.quantidade_de_cordas))
      
-    def tocar(self):
-        notas = list(range(1, self.__quantidade_de_cordas + 1))
-        super().tocar(notas)
+    def tocar(self, notas: Iterable[int]):
+        pass
 
 
 class Flauta(InstrumentoMusical):
@@ -75,14 +94,45 @@ class Flauta(InstrumentoMusical):
 
         super().__init__(fabricante, material, acorde)
         self.__quantidade_de_notas = quantidade_de_notas
+
+    @property
+    def quantidade_de_notas(self):
+        return self.__quantidade_de_notas
     
+    @quantidade_de_notas.setter
+    def quantodade_de_notas(self, nova_quantidade: str):
+        self.quantidade_de_notas = nova_quantidade
+
     def afinar(self, x):
         if not x > self.__quantidade_de_notas:
             print("Afinando nota " + str(x))
         else:
             print("Este instumento só possui {} notas!"\
-                .format(self.__quantidade_de_notas))
+                .format(self.quantidade_de_notas))
     
-    def tocar(self):
-        notas = list(range(1, self.__quantidade_de_notas + 1))
-        super().tocar(notas)
+    def tocar(self, notas: Iterable[int]):
+        pass
+
+
+def main():
+    violao1 = Violao('Martin', 'Mogno', True, 6, True)
+    violao2 = Violao('Yamaha', 'Mogno', True, 6, False)
+    
+    flauta1 = Flauta('Muramatsu', 'Prata', False, 36)
+    flauta2 = Flauta('Artley', 'Madeira', False, 36)
+
+    flauta1.tocar([20])
+    violao1.tocar([1, 2, 3, 8, 6])
+
+main()
+
+# if len(notas) > 7:
+#     print('Não é possível tocar mais de sete notas por vez!')
+# else:
+# for nota in notas:
+#     if not nota in range (1, self.quantidade_de_cordas + 1):
+#         print('Não é possível tocar essa nota ({}) neste \
+# instrumento!'.format(nota))
+#         notas.remove(nota)
+# super().tocar(notas)
+
