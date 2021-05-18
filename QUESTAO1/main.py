@@ -6,6 +6,7 @@
     Date last modified: 18/05/2021
     Python Version: 3.7.3
 '''
+
 from time import sleep
 
 from classes import Flauta, Violao
@@ -15,7 +16,7 @@ def main():
     print('Instanciando violões...\n')
 
     violao1 = Violao('Martin', 'Mogno', True, 6, True)
-    violao2 = Violao('Yamaha', 'Mogno', True, 7, False)
+    violao2 = Violao('Yamaha', 'Carvalho', True, 7, False)
 
     sleep(1)
 
@@ -44,7 +45,7 @@ def main():
     sleep(1)
 
     flauta1 = Flauta('Muramatsu', 'Prata', False, 24)
-    flauta2 = Flauta('Artley', 'Madeira', False, 36)
+    flauta2 = Flauta('Artley', 'Madeira', False, 24)
 
     print('Flauta 1:\n')
     print("Fabricante: {}".format(flauta1.fabricante))

@@ -106,4 +106,3 @@ class Flauta(InstrumentoMusical):
             print(notas)
         else:
             print('Este instrumento só pode tocar uma nota por vez!')
-
