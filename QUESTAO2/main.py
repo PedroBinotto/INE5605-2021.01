@@ -7,13 +7,8 @@
     Python Version: 3.7.3
 '''
 
-m = [
-    [ 0, -1,  0,  0],
-    [ 0, -1,  0,  0],
-    [ 0,  0,  0,  0],
-    [-1,  0,  0,  0],
-    [ 0,  0,  0,  0]
-]
+from exemplos import a, b, c
+
 
 def marcar(m):
     res = []
@@ -59,6 +54,8 @@ def marcar(m):
     return res
 
 
-for i in marcar(m):
-    print(i)
+def main():
+    matrizes = [a, b, c]
+    for matriz in matrizes:
+        print(permut(matriz))
 
