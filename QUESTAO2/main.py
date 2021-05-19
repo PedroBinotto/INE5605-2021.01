@@ -19,12 +19,12 @@ def marcar(m):
     for i in range(height):
         tmp = []
         for j in range(width):
-            if m[i][j] == 0:                                       # Checa se dígito atual representa bloco preto
-                vert = False                                       # FLAG
-                if i + 1 <= height - 1:                            # Checa se próximo dígito existe na matriz  (verticalmente)
-                    if m[i + 1][j] == 0:                           # Checa se próximo dígito é zero            (verticalmente)
-                        if i - 1 > -1:                             # Checa se dígito anterior existe na matriz (verticalmente)
-                            if m[i - 1][j] != 0:                   # Checa se dígito anterior é zero           (verticalmente)
+            if m[i][j] == 0:                                                    # Checa se dígito atual representa bloco preto
+                vert = False                                                    # FLAG
+                if i + 1 <= height - 1:                                         # Checa se próximo dígito existe na matriz  (verticalmente)
+                    if m[i + 1][j] == 0:                                        # Checa se próximo dígito é zero            (verticalmente)
+                        if i - 1 > -1:                                          # Checa se dígito anterior existe na matriz (verticalmente)
+                            if m[i - 1][j] != 0:                                # Checa se dígito anterior é zero           (verticalmente)
                                 cnt += 1
                                 tmp.append(cnt)
                                 vert = True
@@ -32,11 +32,11 @@ def marcar(m):
                             cnt += 1
                             tmp.append(cnt)
                             vert = True
-                if not vert:                                       # Executa apenas caso não seja início vertical
-                    if j + 1 <= width - 1:                         # Checa se próximo dígito existe na matriz  (horizontalmente)
-                        if m[i][j + 1] == 0:                       # Checa se próximo dígito é zero            (horizontalmente)
-                            if j - 1 > -1:                         # Checa se dígito anterior existe na matriz (horizontalmente)
-                                if m[i][j - 1] != 0:               # Checa se dígito anterior é zero           (horizontalmente)
+                if not vert:                                                    # Executa apenas caso não seja início vertical
+                    if j + 1 <= width - 1:                                      # Checa se próximo dígito existe na matriz  (horizontalmente)
+                        if m[i][j + 1] == 0:                                    # Checa se próximo dígito é zero            (horizontalmente)
+                            if j - 1 > -1:                                      # Checa se dígito anterior existe na matriz (horizontalmente)
+                                if m[i][j - 1] != 0:                            # Checa se dígito anterior é zero           (horizontalmente)
                                     cnt += 1
                                     tmp.append(cnt)
                                 else:
@@ -54,12 +54,12 @@ def marcar(m):
     return res
 
 def escreve_matriz(m):
-    col = 3
+    col = 4
     height = len(m)
     for i in range(height):
-        print("".join(str(j).rjust(col) for j in m[i]), end=' ')   # Tratar cada elemento como str para justificar com 'rjust'
-        print()
-
+        print("".join(str(j).rjust(col) for j in m[i]), end=' ')                # Tratar cada elemento como str para justificar com 'rjust';
+        print()                                                                 # dessa forma, a matriz exibida continua alinhada,
+                                                                                # mesmo com elementos de comprimentos diferentes.
 def main():
     matrizes = [a, b, c]
     for i in range(len(matrizes)):

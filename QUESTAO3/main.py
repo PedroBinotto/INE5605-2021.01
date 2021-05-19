@@ -41,7 +41,7 @@ def escreve_matriz(m):
         print()
 
 def main():
-    testes = [a, b, c, d, e, f]     # Matrizes definidas em 'exemplos.py'
+    testes = [a, b, c, d, e, f]                                                 # Matrizes definidas em 'exemplos.py'
     for matriz in testes:
         print('Matriz: \n')
         escreve_matriz(matriz)

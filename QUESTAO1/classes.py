@@ -67,14 +67,14 @@ class Violao(InstrumentoMusical):
         return self.__cordas_de_aço
 
     def afinar_corda(self, x):
-        if not x > self.quantidade_de_cordas:           # Checa se a corda especificada excede a quantidade de cordas.
-            print("Afinando corda " + str(x))
+        if not x > self.quantidade_de_cordas:                                   # Checa se a corda especificada excede a
+            print("Afinando corda " + str(x))                                   # quantidade de cordas.
         else: 
             print("Este instumento só possui {} cordas!"\
                 .format(self.quantidade_de_cordas))
      
     def tocar(self, notas: Iterable[int]):
-        if not len(notas) > 7:                          # Comprimento máximo de sete elementos
+        if not len(notas) > 7:                                                  # Comprimento máximo de sete elementos
             print(notas)
         else:
             print('Esse instrumento só pode tocar sete notas de uma vez!')
@@ -95,14 +95,14 @@ class Flauta(InstrumentoMusical):
         return self.__quantidade_de_notas
 
     def afinar(self, x):
-        if not x > self.__quantidade_de_notas:          # Checa se a nota especificada excede a quantidade de notas.
-            print("Afinando nota " + str(x))
+        if not x > self.__quantidade_de_notas:                                  # Checa se a nota especificada excede a
+            print("Afinando nota " + str(x))                                    # quantidade de notas.
         else:
             print("Este instumento só possui {} notas!"\
                 .format(self.quantidade_de_notas))
     
     def tocar(self, notas: Iterable[int]):
-        if not len(notas) > 1:                          # Comprimento máximo de um elemento
+        if not len(notas) > 1:                                                  # Comprimento máximo de um elemento
             print(notas)
         else:
             print('Este instrumento só pode tocar uma nota por vez!')
