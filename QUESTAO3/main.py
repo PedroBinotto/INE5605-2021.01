@@ -7,24 +7,44 @@
     Python Version: 3.7.3
 '''
 
-from exemplos import a, b, c, d, e, f
+from testes import a, b, c, d, e, f
 
 
 def permut(m):
     for i in range(len(m[0])):
         tmp = []
+        cnt = 0
         for j in m:
             tmp.append(j[i])
-        if 1 not in tmp:
+        for i in tmp:
+            if i not in [0, 1]:
+                return False
+            elif i == 1:
+                cnt += 1
+        if cnt != 1:
             return False
     for i in m:
-        if 1 not in i:
+        cnt = 0
+        for j in i:
+            if j == 1:
+                cnt += 1
+        if cnt != 1:
             return False
     return True
 
+def escreve_matriz(m):
+    height = len(m)
+    width = len(m[0])
+    for i in range(height):
+        for j in range(width):
+            print(m[i][j], end=" ")
+        print()
+
 def main():
-    testes = [a, b, c, d, e, f]
+    testes = [a, b, c, d, e, f]     # Matrizes definidas em 'exemplos.py'
     for matriz in testes:
-        print(permut(matriz))
+        print('Matriz: \n')
+        escreve_matriz(matriz)
+        print('\n', permut(matriz), '\n')
 
 main()

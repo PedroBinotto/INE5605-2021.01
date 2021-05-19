@@ -23,7 +23,11 @@ def main():
         elem = input('Elemento {}: '.format(i))
         l2.append(elem)
 
+    print('\nL1: ', (l1))
+    print('L2: ', (l2))
     l3 = concat(l1, l2)
-    print('Lista concatenada: ', l3)
+    l4 = concat(l2, l1)
+    print('L1 concatenada com L2: ', l3)
+    print('L2 concatenada com L1: ', l4)
 
 main()

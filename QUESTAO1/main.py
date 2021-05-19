@@ -28,6 +28,7 @@ def main():
     print("Cordas de Aço: {}\n".format(violao1.cordas_de_aço))
 
     violao1.afinar_corda(1)
+    print('Tocando notas 1, 3, 5, 8:')
     violao1.tocar([1, 3, 5, 8])
 
     print('\nViolão 2:\n')
@@ -38,6 +39,7 @@ def main():
     print("Cordas de Aço: {}\n".format(violao2.cordas_de_aço))
  
     violao2.afinar_corda(2)
+    print('Tocando notas 5, 3, 5, 1')
     violao2.tocar([5, 3, 5, 1])
     
     print('\nInstanciando flautas...\n')
@@ -54,6 +56,7 @@ def main():
     print("Quantidade de Notas: {}\n".format(flauta1.quantidade_de_notas))
 
     flauta1.afinar(1)
+    print('Tocando nota 1:')
     flauta1.tocar([1])
 
     print('\nFlauta 2:\n')
@@ -63,6 +66,7 @@ def main():
     print("Quantidade de Notas: {}\n".format(flauta2.quantidade_de_notas))
 
     flauta2.afinar(2)
+    print('Tocando nota 2:')
     flauta2.tocar([2])
 
 main()
