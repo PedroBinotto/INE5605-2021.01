@@ -16,14 +16,10 @@ def vertical(m, i, j, height):
             if i - 1 > -1:                                                      # Checa se dígito anterior existe na matriz (verticalmente)
                 if m[i - 1][j] != 0:                                            # Checa se dígito anterior é zero           (verticalmente)
                     return True
-                else:
-                    return False
-            else:
-                return True
-        else:
-            return False
-    else:
+                return False
+            return True
         return False
+    return False
 
 
 def horizontal(m, i, j, width):
@@ -32,14 +28,10 @@ def horizontal(m, i, j, width):
             if j - 1 > -1:                                                      # Checa se dígito anterior existe na matriz (horizontalmente)
                 if m[i][j - 1] != 0:                                            # Checa se dígito anterior é zero           (horizontalmente)
                     return True
-                else:
-                    return False
-            else:
-                return True
-        else:
-            return False
-    else:
+                return False
+            return True
         return False
+    return False
 
 
 def marcar(m):
