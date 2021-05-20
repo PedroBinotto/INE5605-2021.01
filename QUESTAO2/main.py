@@ -10,6 +10,38 @@
 from testes import a, b, c
 
 
+def vertical(m, i, j, height):
+    if i + 1 <= height - 1:                                                     # Checa se próximo dígito existe na matriz  (verticalmente)
+        if m[i + 1][j] == 0:                                                    # Checa se próximo dígito é zero            (verticalmente)
+            if i - 1 > -1:                                                      # Checa se dígito anterior existe na matriz (verticalmente)
+                if m[i - 1][j] != 0:                                            # Checa se dígito anterior é zero           (verticalmente)
+                    return True
+                else:
+                    return False
+            else:
+                return True
+        else:
+            return False
+    else:
+        return False
+
+
+def horizontal(m, i, j, width):
+    if j + 1 <= width - 1:                                                      # Checa se próximo dígito existe na matriz  (horizontalmente)
+        if m[i][j + 1] == 0:                                                    # Checa se próximo dígito é zero            (horizontalmente)
+            if j - 1 > -1:                                                      # Checa se dígito anterior existe na matriz (horizontalmente)
+                if m[i][j - 1] != 0:                                            # Checa se dígito anterior é zero           (horizontalmente)
+                    return True
+                else:
+                    return False
+            else:
+                return True
+        else:
+            return False
+    else:
+        return False
+
+
 def marcar(m):
     res = []
     cnt = 0
@@ -20,38 +52,19 @@ def marcar(m):
         tmp = []
         for j in range(width):
             if m[i][j] == 0:                                                    # Checa se dígito atual representa bloco preto
-                vert = False                                                    # FLAG
-                if i + 1 <= height - 1:                                         # Checa se próximo dígito existe na matriz  (verticalmente)
-                    if m[i + 1][j] == 0:                                        # Checa se próximo dígito é zero            (verticalmente)
-                        if i - 1 > -1:                                          # Checa se dígito anterior existe na matriz (verticalmente)
-                            if m[i - 1][j] != 0:                                # Checa se dígito anterior é zero           (verticalmente)
-                                cnt += 1
-                                tmp.append(cnt)
-                                vert = True
-                        else:
-                            cnt += 1
-                            tmp.append(cnt)
-                            vert = True
-                if not vert:                                                    # Executa apenas caso não seja início vertical
-                    if j + 1 <= width - 1:                                      # Checa se próximo dígito existe na matriz  (horizontalmente)
-                        if m[i][j + 1] == 0:                                    # Checa se próximo dígito é zero            (horizontalmente)
-                            if j - 1 > -1:                                      # Checa se dígito anterior existe na matriz (horizontalmente)
-                                if m[i][j - 1] != 0:                            # Checa se dígito anterior é zero           (horizontalmente)
-                                    cnt += 1
-                                    tmp.append(cnt)
-                                else:
-                                    tmp.append(m[i][j])
-                            else:
-                                cnt += 1
-                                tmp.append(cnt)
-                        else:
-                            tmp.append(m[i][j])
-                    else:
-                        tmp.append(m[i][j])
+                if vertical(m, i, j, height):                                   # Executa apenas caso não seja início vertical
+                    cnt += 1
+                    tmp.append(cnt)
+                elif horizontal(m, i, j, width):
+                    cnt += 1
+                    tmp.append(cnt)
+                else:
+                    tmp.append(m[i][j])
             else:
                 tmp.append(m[i][j])
         res.append(tmp)
     return res
+
 
 def escreve_matriz(m):
     col = 4
@@ -60,6 +73,8 @@ def escreve_matriz(m):
         print("".join(str(j).rjust(col) for j in m[i]), end=' ')                # Tratar cada elemento como str para justificar com 'rjust';
         print()                                                                 # dessa forma, a matriz exibida continua alinhada,
                                                                                 # mesmo com elementos de comprimentos diferentes.
+
+
 def main():
     matrizes = [a, b, c]
     for i in range(len(matrizes)):
